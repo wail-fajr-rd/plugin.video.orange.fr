@@ -2,9 +2,8 @@
 """Orange Template"""
 from datetime import date, datetime, timedelta
 import json
-from urllib.error import HTTPError
-from urllib.parse import urlparse
-from urllib.request import Request, urlopen
+from urllib2 import HTTPError, Request, urlopen
+from urlparse import urlparse
 
 from lib.providers.provider_interface import ProviderInterface
 from lib.utils import get_drm, get_global_setting, log, LogLevel, random_ua
