@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 """Orange Template"""
-from dataclasses import dataclass
 from datetime import date, datetime, timedelta
 import json
 from urllib.error import HTTPError
@@ -10,7 +9,6 @@ from urllib.request import Request, urlopen
 from lib.providers.provider_interface import ProviderInterface
 from lib.utils import get_drm, get_global_setting, log, LogLevel, random_ua
 
-@dataclass
 class OrangeTemplate(ProviderInterface):
     """This template helps creating providers based on the Orange architecture"""
     chunks_per_day = 2
