@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """Make the use of some Kodi functions easier"""
-from enum import Enum
+from lib.enum import Enum
 from json import dumps, loads
 from random import randint
 from string import Formatter
