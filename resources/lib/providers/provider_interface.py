@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """PROVIDER INTERFACE"""
 
-class ProviderInterface:
+class ProviderInterface(object):
     """This interface provides methods to be implemented for each ISP"""
 
     def get_stream_info(self, channel_id):
