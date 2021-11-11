@@ -13,14 +13,14 @@ from lib.utils import get_drm, get_global_setting, log, LogLevel, random_ua
 @dataclass
 class OrangeTemplate(ProviderInterface):
     """This template helps creating providers based on the Orange architecture"""
-    chunks_per_day: int = 2
+    chunks_per_day = 2
 
     def __init__(
         self,
-        endpoint_stream_info: str,
-        endpoint_streams: str,
-        endpoint_programs: str,
-        groups: dict = None
+        endpoint_stream_info,
+        endpoint_streams,
+        endpoint_programs,
+        groups = None
     ):
         self.endpoint_stream_info = endpoint_stream_info
         self.endpoint_streams = endpoint_streams
