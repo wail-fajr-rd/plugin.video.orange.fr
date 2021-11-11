@@ -55,11 +55,11 @@ def get_addon_profile():
     """Return the addon info profile property"""
     return _ADDON.getAddonInfo('profile')
 
-def get_addon_setting(name: str) -> str:
+def get_addon_setting(name):
     """Return the addon setting from name"""
     return _ADDON.getSetting(name)
 
-def get_drm() -> DRM:
+def get_drm():
     """Return the DRM system available for the current platform"""
     return DRM.WIDEVINE
 
@@ -74,7 +74,7 @@ def get_global_setting(key):
 
     return loads(xbmc.executeJSONRPC(dumps(cmd))).get('result', {}).get('value')
 
-def localize(string_id: int, **kwargs):
+def localize(string_id, **kwargs):
     """Return the translated string from the .po language files, optionally translating variables"""
     if not isinstance(string_id, int) and not string_id.isdecimal():
         return string_id
@@ -82,14 +82,14 @@ def localize(string_id: int, **kwargs):
         return Formatter().vformat(_ADDON.getLocalizedString(string_id), (), **kwargs)
     return _ADDON.getLocalizedString(string_id)
 
-def log(msg: str, level: LogLevel):
+def log(msg, level):
     """Wrapper around the Kodi log function"""
     xbmc.log('{}: {}'.format(get_addon_name(), msg), level.value)
 
-def ok_dialog(msg: str):
+def ok_dialog(msg):
     """Wrapper around the Kodi dialop function, display a popup window with a button"""
     xbmcgui.Dialog().ok(get_addon_name(), msg)
 
-def random_ua() -> str:
+def random_ua():
     """Get a random user agent in the list"""
     return _USER_AGENTS[randint(0, len(_USER_AGENTS) - 1)]

@@ -17,7 +17,7 @@ def index():
     ok_dialog(localize(30902))
 
 @plugin.route('/channel/<channel_id>')
-def channel(channel_id: str):
+def channel(channel_id):
     """Load stream for the required channel id"""
     log('Loading channel {}'.format(channel_id), LogLevel.INFO)
 

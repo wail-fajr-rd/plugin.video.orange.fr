@@ -8,7 +8,7 @@ from lib.providers import ProviderInterface
 class IPTVManager:
     """IPTV Manager interface"""
 
-    def __init__(self, port: int, provider: ProviderInterface):
+    def __init__(self, port, provider):
         """Initialize IPTV Manager object"""
         self.port = port
         self.provider = provider
@@ -29,11 +29,11 @@ class IPTVManager:
         return send
 
     @via_socket
-    def send_channels(self) -> dict:
+    def send_channels(self):
         """Return JSON-STREAMS formatted python datastructure to IPTV Manager"""
         return { 'version': 1, 'streams': self.provider.get_streams() }
 
     @via_socket
-    def send_epg(self) -> dict:
+    def send_epg(self):
         """Return JSON-EPG formatted python data structure to IPTV Manager"""
         return { 'version': 1, 'epg': self.provider.get_epg() }

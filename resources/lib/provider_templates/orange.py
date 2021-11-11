@@ -21,13 +21,13 @@ class OrangeTemplate(ProviderInterface):
         endpoint_streams: str,
         endpoint_programs: str,
         groups: dict = None
-    ) -> None:
+    ):
         self.endpoint_stream_info = endpoint_stream_info
         self.endpoint_streams = endpoint_streams
         self.endpoint_programs = endpoint_programs
         self.groups = groups
 
-    def get_stream_info(self, channel_id: int) -> dict:
+    def get_stream_info(self, channel_id):
         req = Request(self.endpoint_stream_info.format(channel_id=channel_id), headers={
             'User-Agent': random_ua(),
             'Host': urlparse(self.endpoint_stream_info).netloc
@@ -62,7 +62,7 @@ class OrangeTemplate(ProviderInterface):
         log(stream_info, LogLevel.DEBUG)
         return stream_info
 
-    def get_streams(self) -> list:
+    def get_streams(self):
         req = Request(self.endpoint_streams, headers={
             'User-Agent': random_ua(),
             'Host': urlparse(self.endpoint_streams).netloc
@@ -85,7 +85,7 @@ class OrangeTemplate(ProviderInterface):
 
         return streams
 
-    def get_epg(self) -> dict:
+    def get_epg(self):
         start_day = datetime.timestamp(
             datetime.combine(
                 date.today() - timedelta(days=int(get_global_setting('epg.pastdaystodisplay'))),
@@ -143,7 +143,7 @@ class OrangeTemplate(ProviderInterface):
         return epg
 
     # pylint: disable=no-self-use
-    def _get_programs(self, period_start: int = None, period_end: int = None) -> list:
+    def _get_programs(self, period_start=None, period_end=None):
         """Returns the programs for today (default) or the specified period"""
         try:
             period = '{start},{end}'.format(start=int(period_start), end=int(period_end))

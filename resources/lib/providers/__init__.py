@@ -20,6 +20,6 @@ _PROVIDER = _PROVIDERS[_KEY]() if _PROVIDERS.get(_KEY) is not None else None
 if not _PROVIDER:
     log('Cannot instanciate provider: {}'.format(_KEY), LogLevel.ERROR)
 
-def get_provider() -> ProviderInterface:
+def get_provider():
     """Return the selected provider"""
     return _PROVIDER

@@ -5,7 +5,7 @@ from lib.providers import ProviderInterface
 class PlaylistGenerator:
     """This class provides tools to generate a playlist based on the given channel information"""
 
-    def __init__(self, provider: ProviderInterface):
+    def __init__(self, provider):
         self.entries = ['#EXTM3U tvg-shift=0', '']
         self.provider = provider
         self._load_streams()
@@ -33,7 +33,7 @@ class PlaylistGenerator:
             self.entries.append(stream_template[2].format(stream=stream['stream']))
             self.entries.append(stream_template[3])
 
-    def write(self, filepath: str):
+    def write(self, filepath):
         """Write the loaded channels into M3U8 file"""
         with open(filepath, 'wb') as file:
             file.writelines('{}\n'.format(entry).encode('utf-8') for entry in self.entries)
