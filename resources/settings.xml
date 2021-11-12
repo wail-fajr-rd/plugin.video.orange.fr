@@ -11,7 +11,7 @@
     </category>
 
     <category label="30200">
-		<setting id="provider.country" label="30201" type="select" values="France" default="France"/>
+        <setting id="provider.country" label="30201" type="select" values="France" default="France"/>
         <setting id="provider.name" visible="eq(-1,France)" label="30203" type="labelenum" values="Orange|Orange Réunion" default="Orange"/>
     </category>
 </settings>

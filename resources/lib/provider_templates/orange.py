@@ -31,8 +31,8 @@ class OrangeTemplate(ProviderInterface):
         })
 
         try:
-            with urlopen(req) as res:
-                stream_info = json.loads(res.read())
+            res = urlopen(req)
+            stream_info = json.loads(res.read())
         except HTTPError as error:
             if error.code == 403:
                 return False
@@ -65,8 +65,8 @@ class OrangeTemplate(ProviderInterface):
             'Host': urlparse(self.endpoint_streams).netloc
         })
 
-        with urlopen(req) as res:
-            channels = json.loads(res.read())
+        res = urlopen(req)
+        channels = json.loads(res.read())
 
         streams = []
 
@@ -152,5 +152,5 @@ class OrangeTemplate(ProviderInterface):
             'Host': urlparse(self.endpoint_programs).netloc
         })
 
-        with urlopen(req) as res:
-            return json.loads(res.read())
+        res = urlopen(req)
+        return json.loads(res.read())
