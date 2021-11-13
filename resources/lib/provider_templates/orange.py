@@ -2,6 +2,7 @@
 """Orange Template"""
 from datetime import date, datetime, timedelta
 import json
+import time
 from urllib2 import HTTPError, Request, urlopen
 from urlparse import urlparse
 
@@ -82,8 +83,11 @@ class OrangeTemplate(ProviderInterface):
 
         return streams
 
+    def timestamp(self, given_time):
+        return int((time.mktime(given_time.timetuple()) + given_time.microsecond / 1000000.0))
+
     def get_epg(self):
-        start_day = datetime.timestamp(
+        start_day = self.timestamp(
             datetime.combine(
                 date.today() - timedelta(days=int(get_global_setting('epg.pastdaystodisplay'))),
                 datetime.min.time()
